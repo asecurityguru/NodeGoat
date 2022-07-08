@@ -10,6 +10,10 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
+    - name: Run E2E test suite
+        run:|
+          NODE_ENV=test npm start -- --silent &
+          npm run test:ci
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
@@ -20,7 +24,7 @@ jobs:
         args: >
           -Dsonar.organization=javaprojectreachability
           -Dsonar.projectKey=javaprojectreachability
-#             -Dsonar.python.coverage.reportPaths=coverage.xml
+          -Dsonar.javascript.lcov.reportPaths=app/coverage/lcov.info
 #             -Dsonar.sources=
 #             -Dsonar.test.exclusions=
 #             -Dsonar.tests=
