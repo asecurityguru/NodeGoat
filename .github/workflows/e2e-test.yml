@@ -44,3 +44,18 @@ jobs:
         run: |
           NODE_ENV=test npm start -- --silent &
           npm run test:ci
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+#        projectBaseDir: my-custom-directory
+          args: >
+            -Dsonar.organization=javaprojectreachability
+            -Dsonar.projectKey=javaprojectreachability
+            -Dsonar.javascript.lcov.reportPaths=app/coverage/lcov.info
+#             -Dsonar.sources=
+#             -Dsonar.test.exclusions=
+#             -Dsonar.tests=
+#             -Dsonar.verbose=true
