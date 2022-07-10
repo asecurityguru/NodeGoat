@@ -6,9 +6,6 @@
     "screenshotsFolder": "test/e2e/screenshots",
     "videosFolder": "test/e2e/videos",
     "supportFile": "test/e2e/support/index.js",
-    "video": false,
-    "reporter": "spec",
-    "reporterOptions": {
-      "mochaFile": "results/my-test-output-[hash].xml"
+    "video": false
   }
 }
